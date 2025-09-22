@@ -27,6 +27,8 @@ export const productStore = defineStore("cart", {
       const prod = this.product.find((item) => item.id === id);
       if (prod && prod.qty < 10) {
         prod.qty += 1;
+      }else{
+         toast.success("Limit Reached");
       }
     },
     decreaseQty(id) {

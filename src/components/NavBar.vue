@@ -19,7 +19,7 @@
                         <div class="flex-shrink-0 text-white text-2xl font-bold">
                             <router-link to="/">SHOOPER</router-link>
                         </div>
-                        <div class="ml-10 space-x-8 hidden sm:flex gap-10 items-center justify-center">
+                        <div class="ml-10 space-x-8 hidden sm:flex gap-8 items-center justify-center">
                             <router-link to="/" class="text-white font-semibold hover:text-blue-500"
                                 active-class="active-link">
                                 HOME
@@ -32,9 +32,8 @@
                             active-class="active-link">
                             CART
                         </router-link>
-                        <router-link to="/contact" class="text-white font-semibold hover:text-blue-500"
-                            active-class="active-link">
-                            CONTACT
+                        <router-link to="/login" class="text-white font-semibold hover:text-blue-500" >
+                            LOGIN
                         </router-link>
                         </div>
                     </div>
@@ -54,7 +53,7 @@
                 <router-link to="/cart" class="text-white font-semibold hover:text-blue-500" active-class="active-link">
                     CART
                 </router-link>
-                <router-link to="/contact" class="block text-white font-semibold hover:text-blue-500"
+                <router-link to="/contact" class="block text-white font-semibold hover:text-blue-500" :active-class="active-link"
                     active-class="active-link">
                     CONTACT
                 </router-link>

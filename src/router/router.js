@@ -7,7 +7,9 @@ const routes = [
   { path: "/products", name: "posts", component: Posts },
   { path: "/cart", name: "cart", component: Carts },
   { path: "/products/:id", name: "ProductDetail", component: () => import("../views/ProductDetail.vue")},
-  { path: "/contact", name: "contact", component: () => import("../views/Contact.vue")},
+  { path: "/login" , name : "login" , component : ()=> import("../views/Login.vue")},
+  { path: "/register" , name : "register" , component : ()=> import("../views/Register.vue")},
+  { path: "/about" , component : ()=> import("../views/About.vue")}
 ];
 
 const router = createRouter({

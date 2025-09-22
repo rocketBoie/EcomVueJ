@@ -3,7 +3,9 @@ import { ref, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import axios from 'axios';
 import NavBar from '../components/NavBar.vue';
-
+import { productStore } from '../stores/productStore';
+const store = productStore()
+import InnerImageZoom from 'vue-inner-image-zoom';
 
 const route = useRoute();
 const router = useRouter();
@@ -45,14 +47,22 @@ function goBack() {
         <div v-else-if="error" class="text-red-500 text-center">{{ error }}</div>
 
         <div v-else class="flex flex-col md:flex-row gap-8">
-            <v-img :src="product.image" :alt="product.title" class="w-full md:w-1/2 h-96 object-contain rounded-xl" />
 
+            <!-- <v-img :src="product.image" :alt="product.title" class="w-full md:w-1/2 h-96 object-contain rounded-xl" /> -->
+            <inner-image-zoom :src="product.image" :zoomSrc="product.image" zoom-type="hover"
+                class="w-full md:w-1/2 h-96 object-contain rounded-xl" />
             <div class="flex flex-col justify-start md:w-1/2">
                 <h1 class="text-3xl font-bold mb-4">{{ product.title }}</h1>
                 <p class="text-gray-700 mb-4">{{ product.description }}</p>
                 <p class="text-2xl font-semibold mb-6">${{ product.price }}</p>
                 <div class="flex items-center  gap-4">
-                    <v-btn  class="mb-2" variant="elevated">Add To Cart</v-btn>
+                    <v-btn @click="store.addToCart({
+                        id: product.id,
+                        title: product.title,
+                        price: product.price,
+                        image: product.image,
+                        qty: 1
+                    })" class="mb-2" variant="elevated">Add To Cart</v-btn>
                     <v-btn color="pink" class="mb-2"> Add To ❤️</v-btn>
                 </div>
             </div>
