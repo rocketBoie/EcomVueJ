@@ -46,7 +46,7 @@ const filteredProducts = computed(() => {
             <div v-for="product in filteredProducts" :key="product.id"
                 class="shadow-lg pl-2 pr-2 pt-2 pb-2 hover:shadow-2xl transition-all duration-300 ease-in-out transform hover:scale-105 flex items-center justify-center flex-col">
                 <router-link :to="`/products/${product.id}`" class="w-full">
-                    <v-img :src="product.image" :alt="product.title"    
+                    <v-img :src="product.image" :alt="product.title"
                         class="w-full h-64 object-cover rounded-xl mb-6 transition-transform group-hover:scale-110" />
                 </router-link>
 
@@ -64,7 +64,14 @@ const filteredProducts = computed(() => {
                     })" class="mb-2" variant="elevated">
                         Add To Cart
                     </v-btn>
-                    <v-btn color="pink" class="mb-2">Add To ❤️</v-btn>
+                    
+                    <v-btn @click="store.addToFav({
+                        id: product.id,
+                        title: product.title,
+                        price: product.price,
+                        image: product.image,
+                        qty : 1,    
+                    })" color="pink" class="mb-2">Add To ❤️</v-btn>
                 </div>
             </div>
         </div>

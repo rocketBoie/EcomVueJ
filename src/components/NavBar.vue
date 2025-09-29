@@ -29,12 +29,16 @@
                                 PRODUCTS
                             </router-link>
                             <router-link to="/cart" class="text-white font-semibold hover:text-blue-500"
-                            active-class="active-link">
-                            CART
-                        </router-link>
-                        <router-link to="/login" class="text-white font-semibold hover:text-blue-500" >
-                            LOGIN
-                        </router-link>
+                                active-class="active-link">
+                                CART
+                            </router-link>
+                            <router-link to="/wishlist" class="text-white font-semibold hover:text-blue-500"
+                                active-class="active-link">
+                                WISHLIST❤️
+                            </router-link>
+                            <router-link to="/login" class="text-white font-semibold hover:text-blue-500">
+                                LOGIN
+                            </router-link>
                         </div>
                     </div>
                 </div>
@@ -53,8 +57,8 @@
                 <router-link to="/cart" class="text-white font-semibold hover:text-blue-500" active-class="active-link">
                     CART
                 </router-link>
-                <router-link to="/contact" class="block text-white font-semibold hover:text-blue-500" :active-class="active-link"
-                    active-class="active-link">
+                <router-link to="/contact" class="block text-white font-semibold hover:text-blue-500"
+                    :active-class="active - link" active-class="active-link">
                     CONTACT
                 </router-link>
             </div>

@@ -19,7 +19,9 @@ app.config.globalProperties.$axios = axios;
 
 app
   .use(vuetify)
-  .use(Vue3Toastify)
+  .use(Vue3Toastify , {
+    autoClose : 1000
+  })
   .use(pinia.use(piniaPluginPersistedstate))
   .use(GoogleLoginPlugin, {
     clientId:

@@ -82,7 +82,7 @@ const removeItem = (id) => {
                 <tbody>
                     <tr v-for="item in store.product" :key="item.id" class="border-t hover:bg-gray-50 transition">
                         <td class="py-3 px-4">
-                            <router-link to="">
+                            <router-link :to="`/products/${item.id}`">
                                 <img :src="item.image" alt="Product Image" class="w-16 h-16 object-contain rounded" />
                             </router-link>
                         </td>

@@ -49,8 +49,8 @@ function goBack() {
         <div v-else class="flex flex-col md:flex-row gap-8">
 
             <!-- <v-img :src="product.image" :alt="product.title" class="w-full md:w-1/2 h-96 object-contain rounded-xl" /> -->
-            <inner-image-zoom :src="product.image" :zoomSrc="product.image" zoom-type="hover"
-                class="w-full md:w-1/2 h-96 object-contain rounded-xl" />
+            <inner-image-zoom :src="product.image" :zoomSrc="product.image" zoom-type="hover" :zoomScale="1.8" 
+                class="w-full md:w-1/2 h-96 object-contain " />
             <div class="flex flex-col justify-start md:w-1/2">
                 <h1 class="text-3xl font-bold mb-4">{{ product.title }}</h1>
                 <p class="text-gray-700 mb-4">{{ product.description }}</p>

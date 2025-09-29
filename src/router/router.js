@@ -9,7 +9,8 @@ const routes = [
   { path: "/products/:id", name: "ProductDetail", component: () => import("../views/ProductDetail.vue")},
   { path: "/login" , name : "login" , component : ()=> import("../views/Login.vue")},
   { path: "/register" , name : "register" , component : ()=> import("../views/Register.vue")},
-  { path: "/about" , component : ()=> import("../views/About.vue")}
+  { path: "/about" , component : ()=> import("../views/About.vue")},
+  { path: "/wishlist" , component : ()=> import("../views/Fav.vue")}
 ];
 
 const router = createRouter({
