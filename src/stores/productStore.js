@@ -1,10 +1,13 @@
 import { defineStore } from "pinia";
 import { toast } from "vue3-toastify";
 
+
 export const productStore = defineStore("cart", {
   state: () => ({
     product: [],
-    fav : []
+    fav : [],
+    len : 0,
+    wish : 0,
   }),
   persist: true,
   actions: {
@@ -12,7 +15,7 @@ export const productStore = defineStore("cart", {
       const exs = this.product.find((x) => x.id === items.id);
       if (exs) {
         exs.qty += 1;
-        toast.success("Item Quantity Updated");
+        toast.info("Item Quantity Updated");
       } else {
         this.product.unshift({
           title: items.title,
@@ -22,8 +25,8 @@ export const productStore = defineStore("cart", {
           qty: items.qty,
         });
         toast.success("Item Added To Cart");
-        console.log(items.price)
       }
+      this.len = this.product.length
     },
     increaseQty(id) {
       const prod = this.product.find((item) => item.id === id);
@@ -40,12 +43,14 @@ export const productStore = defineStore("cart", {
           prod.qty -= 1;
         } else {
           this.removeItem(id);
-        }
+          // const prod = this.product.filter((item) => item.id !== id)
+        } 
       }
     },
     removeItem(id) {
       this.product = this.product.filter((item) => item.id !== id);
       toast.success("Item Removed From Cart");
+      this.len--
     },
     addToFav(items){
       const exs = this.fav.find((x) => x.id === items.id);  
@@ -62,10 +67,12 @@ export const productStore = defineStore("cart", {
         })
         toast.success("Item Added to WishList ❤️")
       }
+      this.wish = this.fav.length
     },
     removeFav(id){
       this.fav = this.fav.filter((item)=> item.id !== id)
       toast.success("Item Removed From WishList");
-    }
+      this.wish--
+    },
   },
 });

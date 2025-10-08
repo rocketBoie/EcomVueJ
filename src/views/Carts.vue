@@ -3,6 +3,13 @@ import { computed, ref } from "vue";
 import { productStore } from "../stores/productStore";
 import NavBar from "../components/NavBar.vue";
 import { toast } from "vue3-toastify";
+import { useRouter } from "vuetify/lib/composables/router.mjs";
+
+const route = useRouter()
+
+const handleCheckout= ()=>{
+    route.push({name : "payment"})
+}
 
 const store = productStore();
 const discount = ref(0);
@@ -11,9 +18,9 @@ const coupon = ref("");
 const apply = () => {
     coupon.value = coupon.value.toUpperCase();
 
-    const totalBeforeDiscount = store.product.reduce((sum , item)=>{
+    const totalBeforeDiscount = store.product.reduce((sum, item) => {
         return sum + item.price * item.qty
-    },0)
+    }, 0)
 
     if (coupon.value === "") {
         toast.info("Enter the coupon");
@@ -48,8 +55,8 @@ const Total = computed(() => {
     const total = store.product.reduce((sum, item) => {
         return sum + item.price * item.qty;
     }, 0);
-    if(total > discount.value)
-    return Math.max(total - discount.value, 0);
+    if (total > discount.value)
+        return Math.max(total - discount.value, 0);
     else return total
 });
 
@@ -61,7 +68,7 @@ const removeItem = (id) => {
 <template>
     <NavBar />
     <div class="container mx-auto p-6 mt-10">
-        <h1 class="text-3xl font-bold mb-6">Your Cart</h1>
+        <h1 class="text-3xl font-bold mb-6">Your Cart 🛒</h1>
 
         <div v-if="store.product.length === 0" class="text-center text-gray-500 text-2xl">
             Your cart is empty 🛒
@@ -107,7 +114,7 @@ const removeItem = (id) => {
 
             <div class="flex items-center justify-between gap-4">
                 <div class="flex items-center gap-2">
-                    <input type="text" v-model="coupon" placeholder="Enter coupon code" 
+                    <input type="text" v-model="coupon" placeholder="Enter coupon code"
                         class="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 uppercase" />
                     <button @click="apply" class="bg-indigo-600  px-4 py-2 rounded hover:bg-indigo-700 transition">
                         Apply
@@ -115,6 +122,11 @@ const removeItem = (id) => {
                 </div>
 
                 <h2 class="text-2xl font-semibold">Total: ${{ Total.toFixed(2) }}</h2>
+            </div>
+            <div class="mt-4 flex justify-end items-right">
+                <button @click="handleCheckout" class="bg-indigo-600 py-2 px-6 rounded hover:bg-indigo-700 border">
+                    Proceed to Checkout
+                </button>
             </div>
         </div>
     </div>

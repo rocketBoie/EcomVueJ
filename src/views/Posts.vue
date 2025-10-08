@@ -4,8 +4,9 @@ import axios from 'axios';
 import NavBar from '../components/NavBar.vue';
 import { productStore } from '../stores/productStore';
 import { toast } from 'vue3-toastify';
-const store = productStore()
+import Footer from '../components/Footer.vue';
 
+const store = productStore()
 const products = ref([]);
 const loading = ref(true);
 
@@ -37,7 +38,7 @@ const filteredProducts = computed(() => {
             class="w-full border border-gray-300 rounded-lg px-4 py-3 mb-8 text-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
     </div>
 
-    <div class="container mx-auto p-6 mt-2">
+    <div class="container mx-auto p-6 mt-2 mb-10">
         <div v-if="loading" class="flex justify-center items-center h-[50vh]">
             <v-progress-circular indeterminate color="primary" size="64" />
         </div>
@@ -76,4 +77,5 @@ const filteredProducts = computed(() => {
             </div>
         </div>
     </div>
+    <Footer/>
 </template>

@@ -11,6 +11,7 @@ import "@mdi/font/css/materialdesignicons.css";
 import axios from "axios";
 import piniaPluginPersistedstate from "pinia-plugin-persistedstate";
 import GoogleLoginPlugin from "vue3-google-login";
+import store from "./stores/store.vuex";
 
 const pinia = createPinia();
 const vuetify = createVuetify();
@@ -20,8 +21,9 @@ app.config.globalProperties.$axios = axios;
 app
   .use(vuetify)
   .use(Vue3Toastify , {
-    autoClose : 1000
+    autoClose : 1000,
   })
+  // .use(store)
   .use(pinia.use(piniaPluginPersistedstate))
   .use(GoogleLoginPlugin, {
     clientId:

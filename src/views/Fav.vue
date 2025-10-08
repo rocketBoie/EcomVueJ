@@ -3,6 +3,7 @@ import { ref } from 'vue';
 import { productStore } from '../stores/productStore';
 import NavBar from '../components/NavBar.vue';
 
+
 const store = productStore()
 
 
@@ -10,7 +11,7 @@ const store = productStore()
 <template>
     <NavBar/>
     <div class="container mx-auto p-6 mt-10">
-        <h1 class="text-3xl font-bold mb-6">Your WishList</h1>
+        <h1 class="text-3xl font-bold mb-6">Your WishList ❤️</h1>
 
         <div v-if="store.fav.length === 0" class="text-center text-gray-500 text-2xl">
             Your WishList is empty 🛒
@@ -39,6 +40,7 @@ const store = productStore()
                         <td class="py-3 px-4">
                             <button @click="store.addToCart(item)" class="text-red-600 hover:text-red-800 font-semibold ml-5">
                                 <v-icon color="red">mdi-cart</v-icon>
+                    
                             </button>
                         </td>
                         <td class="py-3 px-4">
@@ -52,4 +54,5 @@ const store = productStore()
 
         </div>
     </div>
+
 </template>

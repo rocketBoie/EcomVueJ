@@ -63,7 +63,13 @@ function goBack() {
                         image: product.image,
                         qty: 1
                     })" class="mb-2" variant="elevated">Add To Cart</v-btn>
-                    <v-btn color="pink" class="mb-2"> Add To ❤️</v-btn>
+                    <v-btn @click="store.addToFav({
+                        id: product.id,
+                        title: product.title,
+                        price: product.price,
+                        image: product.image,
+                        qty: 1
+                    })" color="pink" class="mb-2"> Add To ❤️</v-btn>
                 </div>
             </div>
         </div>
